@@ -1,154 +1,172 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>TuMeteo - National and Local weather</title>
-       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-      <script src="https://kit.fontawesome.com/8fb397e125.js" crossorigin="anonymous"></script>
-      <link rel="apple-touch-icon" sizes="57x57" href="images/favicon.ico/apple-icon-57x57.png" />
-      <link rel="apple-touch-icon" sizes="60x60" href="images/favicon.ico/apple-icon-60x60.png" />
-      <link rel="apple-touch-icon" sizes="72x72" href="images/favicon.ico/apple-icon-72x72.png" />
-      <link rel="apple-touch-icon" sizes="76x76" href="images/favicon.ico/apple-icon-76x76.png" />
-      <link rel="apple-touch-icon" sizes="114x114" href="images/favicon.ico/apple-icon-114x114.png" />
-      <link rel="apple-touch-icon" sizes="120x120" href="images/favicon.ico/apple-icon-120x120.png" />
-      <link rel="apple-touch-icon" sizes="144x144" href="images/favicon.ico/apple-icon-144x144.png" />
-      <link rel="apple-touch-icon" sizes="152x152" href="images/favicon.ico/apple-icon-152x152.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.ico/apple-icon-180x180.png" />
-      <link rel="icon" type="image/png" sizes="192x192" href="images/favicon.ico/android-icon-192x192.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.ico/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="96x96" href="images/favicon.ico/favicon-96x96.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.ico/favicon-16x16.png" />
-      <link rel="manifest" href="images/favicon.ico/manifest.json" />
-      <meta name="msapplication-TileColor" content="#ffffff" />
-      <meta name="msapplication-TileImage" content="images/favicon.ico/ms-icon-144x144.png" />
-      <meta name="theme-color" content="#ffffff" />
-      <meta charset="UTF-8" />
-      <link href="src/style.css" rel="stylesheet" type="text/css" />
-   </head>
-   <body>
-      <div class="container">
-         <header class="row">
-               <div class="col-sm-3">
-                  <a href="https://www.shecodes.io/" target="_blank" class="a-no-decoration">
-                  <span class="logo"><i class="fa-solid fa-bolt-lightning"></i>TuMeteo</span></a
-                     >
-               </div>
-               <div class="col-sm-9">
-                  <form class="search-form" id="search-form">
-                     <input
-                        type="search"
-                        class="form-control form-control-lg flex-item search-input"
-                        placeholder="Enter a city..."
-                        aria-label="Search"
-                        autofocus="off"
-                autocomplete="off"
-                id="city-input" aria-label="submit" />
-                     
-                     <input type="submit" class="flex-item main-btn" 
-                     value="Search"
-                     aria-label="submit" />
-                  </form>
-               </div>
-               <div class="row">
-                  <div class="col-sm-7"></div>
-                  <div class="col-sm-5 current-location-section">
-                     <span>Or look for your<button id="current-location-button">current location</button></span>
-                  </div>
-               </div>
-         </header>
-         <div class="current-weather-container">
-<main class="row">
-            <div class="col-sm-7 current-weather">
-               <section>
-                  <h1 id="city">Barcelona</h1>
-                  <p><time id="date">15 de Julio de 2023, h19:00</time></p>
-                  <span class="temperature" id="temperature">30</span>
-                  <sup class="unit">
-                     <a href="#" id="celsius-link">°C</a> |
-                  <a href="#" id="fahrenheit-link">°F</a>
-               </sup>
-                  
-                  <i class="fa-solid fa-cloud-sun current-weather-icon"></i>
-               </section>
-            </div>
-            <div class="col-sm-5 list-wrap">
-               <section class="">
-                  <ul class="">
-                     <li><i class="fa-solid fa-droplet"></i> Humidity:</li>
-                     <li><i class="fa-solid fa-circle-exclamation"></i> UV index:</li>
-                     <li><i class="fa-solid fa-clock"></i> Sunrise/Sunset:</li>
-                  </ul>
-               </section>
-               <section class="">
-                  <ul class="">
-                     <li><strong>66%</strong></li>
-                     <li><strong>Very high</strong></li>
-                     <li><strong><time datetime="2023-07-15T6:28"></time>6:28h</time></strong>, <strong><time datetime="2023-07-15T6:28"></time>21:26h</time></strong></li>
-                  </ul>
-               </section>
-            </div>
-         </main>
-         </div>
-         
-         <section class="row week">
-            <ul class="nav nav-pills">
-               <li class="nav-item">
-                  <a class="nav-link active meteo-pill" aria-current="page" href="#">This week</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link other-option" href="#">Rainfall</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link other-option" href="#">Wind</a>
-               </li>
-            </ul>
-         </section>
-         <section class="tab-content"id="tabs-content">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
-               <div class="weather-forecast row">
-                  <div class="col">
-                     <div class="weather-forecast-preview">
-                        <div class="forecast-time">Thu</div>
-                        <i class="fa-solid fa-cloud-sun weather-forecast-preview-icon"></i>
-                        <div class="forecast-temperature"><span class="forecast-temperature-max">32°</span><span class="forecast-temperature-min">21°</span></div>
-                     </div>
-                  </div>
-                  <div class="col">
-                     <div class="weather-forecast-preview">
-                        <div class="forecast-time">Fri</div>
-                        <i class="fa-solid fa-cloud-bolt weather-forecast-preview-icon"></i>
-                        <div class="forecast-temperature"><span class="forecast-temperature-max">28°</span><span class="forecast-temperature-min">20°</span></div>
-                     </div>
-                  </div>
-                  <div class="col">
-                     <div class="weather-forecast-preview">
-                        <div class="forecast-time">Sat</div>
-                        <i class="fa-solid fa-cloud-sun weather-forecast-preview-icon"></i>
-                        <div class="forecast-temperature"><span class="forecast-temperature-max">30°</span><span class="forecast-temperature-min">22°</span></div>
-                     </div>
-                  </div>
-                  <div class="col">
-                     <div class="weather-forecast-preview">
-                        <div class="forecast-time">Sun</div>
-                       <i class="fa-solid fa-cloud-showers-heavy weather-forecast-preview-icon"></i>
-                        <div class="forecast-temperature"><span class="forecast-temperature-max">28°</span><span class="forecast-temperature-min">23°</span></div>
-                     </div>
-                  </div>
-                  <div class="col">
-                     <div class="weather-forecast-preview">
-                        <div class="forecast-time">Mon</div>
-                        <i class="fa-solid fa-cloud-sun-rain weather-forecast-preview-icon"></i>
-                        <div class="forecast-temperature"><span class="forecast-temperature-max">29°</span><span class="forecast-temperature-min">23°</span></div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="tab-pane fade" id="pills-rainfall" role="tabpanel" aria-labelledby="pills-rainfall-tab">...</div>
-            <div class="tab-pane fade" id="pills-wind" role="tabpanel" aria-labelledby="pills-wind-tab">...</div>
-         </section>
+  <head>
+    <title>TuMeteo - National and Local weather</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/8fb397e125.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="images/favicon.ico/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="images/favicon.ico/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon.ico/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicon.ico/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicon.ico/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="images/favicon.ico/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="images/favicon.ico/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="images/favicon.ico/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.ico/apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon.ico/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.ico/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon.ico/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.ico/favicon-16x16.png" />
+    <link rel="manifest" href="images/favicon.ico/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="images/favicon.ico/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta charset="UTF-8" />
+    <link href="src/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="row">
+        <div class="col-sm-3">
+          <a href="https://www.shecodes.io/" target="_blank" class="a-no-decoration">
+            <span class="logo"><i class="fa-solid fa-bolt-lightning"></i>TuMeteo</span></a
+          >
+        </div>
+        <div class="col-sm-9">
+          <form class="search-form" id="search-form">
+            <input
+              type="search"
+              class="form-control form-control-lg flex-item search-input"
+              placeholder="Enter a city..."
+              aria-label="Search"
+              autofocus="off"
+              autocomplete="off"
+              id="city-input"
+              aria-label="submit"
+            />
 
-         <footer>Exercise coded by <strong>Stefania Desogus</strong></footer>
+            <input type="submit" class="flex-item main-btn" value="Search" aria-label="submit" />
+          </form>
+        </div>
+        <div class="row">
+          <div class="col-sm-7"></div>
+          <div class="col-sm-5 current-location-section">
+            <span>Or look for your<button id="current-location-button">current location</button></span>
+          </div>
+        </div>
+      </header>
+      <div class="current-weather-container">
+        <main class="row">
+          <div class="col-sm-7 current-weather">
+            <section>
+              <h1 id="city">Barcelona</h1>
+              <p><time id="date">15 de Julio de 2023, h19:00</time></p>
+              <span class="temperature" id="temperature">30</span>
+              <sup class="unit">
+                <a href="#" id="celsius-link">°C</a> |
+                <a href="#" id="fahrenheit-link">°F</a>
+              </sup>
+
+              <i class="fa-solid fa-cloud-sun current-weather-icon"></i>
+            </section>
+          </div>
+          <div class="col-sm-5 list-wrap">
+            <section class="">
+              <ul class="">
+                <li><i class="fa-solid fa-droplet"></i> Humidity:</li>
+                <li><i class="fa-solid fa-circle-exclamation"></i> UV index:</li>
+                <li><i class="fa-solid fa-clock"></i> Sunrise/Sunset:</li>
+              </ul>
+            </section>
+            <section class="">
+              <ul class="">
+                <li><strong>66%</strong></li>
+                <li><strong>Very high</strong></li>
+                <li>
+                  <strong><time datetime="2023-07-15T6:28">6:28h</time></strong
+                  >, <strong><time datetime="2023-07-15T6:28">21:26h</time></strong>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </main>
       </div>
-      <script src="src/index.js"></script>
-   </body>
+
+      <section class="row week">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link active meteo-pill" aria-current="page" href="#">This week</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link other-option" href="#">Rainfall</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link other-option" href="#">Wind</a>
+          </li>
+        </ul>
+      </section>
+      <section class="tab-content" id="tabs-content">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
+          <div class="weather-forecast row">
+            <div class="col">
+              <div class="weather-forecast-preview">
+                <div class="forecast-time">Thu</div>
+                <i class="fa-solid fa-cloud-sun weather-forecast-preview-icon"></i>
+                <div class="forecast-temperature">
+                  <span class="forecast-temperature-max">32°</span><span class="forecast-temperature-min">21°</span>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="weather-forecast-preview">
+                <div class="forecast-time">Fri</div>
+                <i class="fa-solid fa-cloud-bolt weather-forecast-preview-icon"></i>
+                <div class="forecast-temperature">
+                  <span class="forecast-temperature-max">28°</span><span class="forecast-temperature-min">20°</span>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="weather-forecast-preview">
+                <div class="forecast-time">Sat</div>
+                <i class="fa-solid fa-cloud-sun weather-forecast-preview-icon"></i>
+                <div class="forecast-temperature">
+                  <span class="forecast-temperature-max">30°</span><span class="forecast-temperature-min">22°</span>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="weather-forecast-preview">
+                <div class="forecast-time">Sun</div>
+                <i class="fa-solid fa-cloud-showers-heavy weather-forecast-preview-icon"></i>
+                <div class="forecast-temperature">
+                  <span class="forecast-temperature-max">28°</span><span class="forecast-temperature-min">23°</span>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="weather-forecast-preview">
+                <div class="forecast-time">Mon</div>
+                <i class="fa-solid fa-cloud-sun-rain weather-forecast-preview-icon"></i>
+                <div class="forecast-temperature">
+                  <span class="forecast-temperature-max">29°</span><span class="forecast-temperature-min">23°</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-rainfall" role="tabpanel" aria-labelledby="pills-rainfall-tab">...</div>
+        <div class="tab-pane fade" id="pills-wind" role="tabpanel" aria-labelledby="pills-wind-tab">...</div>
+      </section>
+
+      <footer>
+        This project is
+        <strong> <a href="https://github.com/stef-ania/Weather-app" target="_blank">open-sourced on GitHub</a></strong>
+        and it is coded by
+        <strong>Stefania Desogus</strong>
+      </footer>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
 </html>
