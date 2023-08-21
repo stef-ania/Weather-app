@@ -45,10 +45,37 @@ let currentDate = document.querySelector("#date");
 var currentTime = new Date();
 currentDate.innerHTML = formatDate(currentTime);
 
+// Format Sunrise Unix timestamp
+
+function formatSunriseTimestamp(response) {
+  let sunriseTime = response.data.sys.sunrise;
+
+  const sunrise = new Date(sunriseTime * 1000);
+  const sunriseTimeString = sunrise.toLocaleTimeString("en-US");
+
+  return sunriseTimeString;
+}
+
+// Format Sunset Unix timestamp
+
+function formatSunsetTimestamp(response) {
+  let sunsetTime = response.data.sys.sunset;
+
+  const sunset = new Date(sunsetTime * 1000);
+  const sunsetTimeString = sunset.toLocaleTimeString("en-US");
+
+  return sunsetTimeString;
+}
+
 // Weather
 function displayWeather(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp);
+  document.querySelector("#weather-description").innerHTML = response.data.weather[0].description;
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = response.data.wind.speed;
+  document.querySelector("#sunrise-time").innerHTML = formatSunriseTimestamp(response);
+  document.querySelector("#sunset-time").innerHTML = formatSunsetTimestamp(response);
 }
 
 // Search Engine:

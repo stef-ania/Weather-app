@@ -152,8 +152,12 @@ sup {
   color: #2c3d64;
 }
 
-span#weather-description {
+#weather-description {
   font-weight: bold;
+}
+
+#weather-description::first-letter {
+  text-transform: capitalize;
 }
 
 a,
@@ -193,12 +197,13 @@ time#date {
 }
 .list-wrap ul {
   list-style-type: none;
+  margin-bottom: 0;
   padding-left: 1rem;
 }
 
 .list-wrap li {
   color: #384c7e;
-  margin: 1rem auto;
+  margin: 0.5rem auto;
 }
 
 .list-wrap li strong {
