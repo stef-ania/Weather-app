@@ -120,7 +120,6 @@ a .logo {
 
 main {
   border-radius: 32px;
-  color: #fff;
   padding: 1rem;
 }
 
@@ -134,7 +133,7 @@ main {
   opacity: 1;
   position: absolute;
   right: 4rem;
-  top: 7.5rem;
+  top: 9rem;
 }
 
 .fa-cloud-sun.current-weather-icon {
@@ -143,27 +142,18 @@ main {
 }
 
 h1,
-.current-weather > section p time {
+.current-weather > section p time,
+span#weather-description {
   color: #2c3c64;
 }
 
 .temperature,
-sup,
-.current-location-section {
+sup {
   color: #2c3d64;
 }
 
-.current-location-section {
-  font-size: 0.75rem;
-  margin-top: 1rem;
-}
-#current-location-button {
-  background-color: rgba(247, 107, 138, 1);
-  background-color: transparent;
-  border: none;
-  color: #6f98fc;
-  font-size: 0.75rem;
-  font-weight: 700;
+span#weather-description {
+  font-weight: bold;
 }
 
 a,
