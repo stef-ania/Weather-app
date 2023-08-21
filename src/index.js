@@ -135,7 +135,6 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", showCitySearched);
 
 // Temperature unit conversion:
-
 function convertToCelsius(event) {
   event.preventDefault();
   let celsiusTemperature = document.querySelector("#temperature");
@@ -145,7 +144,7 @@ function convertToCelsius(event) {
 function convertToFahrenheit(event) {
   event.preventDefault();
   let fahrenheitTemperature = document.querySelector("#temperature");
-  fahrenheitTemperature.innerHTML = 78;
+  fahrenheitTemperature.innerHTML = Math.round((22 * 9) / 5 + 32);
 }
 
 let celsiusLink = document.querySelector("#celsius-link");
