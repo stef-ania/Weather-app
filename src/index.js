@@ -22,22 +22,7 @@ function formatDate(date) {
   ];
   let month = months[date.getMonth()];
 
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = "0".concat(hours);
-  }
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = "0".concat(minutes);
-  }
-
-  return ""
-    .concat(day, ", ")
-    .concat(month, " ")
-    .concat(dateOfMonth, ", ")
-    .concat(year, " - h")
-    .concat(hours, ":")
-    .concat(minutes);
+  return "".concat(day, ", ").concat(month, " ").concat(dateOfMonth, ", ").concat(year, "");
 }
 
 // Current Date:
@@ -45,25 +30,33 @@ let currentDate = document.querySelector("#date");
 var currentTime = new Date();
 currentDate.innerHTML = formatDate(currentTime);
 
-// Format Sunrise Unix timestamp
-
+// Format Sunrise Unix timestam
 function formatSunriseTimestamp(response) {
   let sunriseTime = response.data.sys.sunrise;
-
   const sunrise = new Date(sunriseTime * 1000);
-  const sunriseTimeString = sunrise.toLocaleTimeString("en-US");
 
+  const options = {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  };
+
+  const sunriseTimeString = sunrise.toLocaleTimeString("en-US", options);
   return sunriseTimeString;
 }
 
 // Format Sunset Unix timestamp
-
 function formatSunsetTimestamp(response) {
   let sunsetTime = response.data.sys.sunset;
-
   const sunset = new Date(sunsetTime * 1000);
-  const sunsetTimeString = sunset.toLocaleTimeString("en-US");
 
+  const options = {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  };
+
+  const sunsetTimeString = sunset.toLocaleTimeString("en-US", options);
   return sunsetTimeString;
 }
 
@@ -72,6 +65,7 @@ function displayWeather(response) {
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp);
   document.querySelector("#weather-description").innerHTML = response.data.weather[0].description;
+
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
   document.querySelector("#sunrise-time").innerHTML = formatSunriseTimestamp(response);
