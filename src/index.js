@@ -101,6 +101,7 @@ function displayWeather(response) {
   let windElement = document.querySelector("#wind");
   let sunriseElement = document.querySelector("#sunrise-time");
   let sunsetElement = document.querySelector("#sunset-time");
+  let currentWeatherIcon = document.querySelector("#current-weather-icon");
 
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -109,7 +110,8 @@ function displayWeather(response) {
   windElement.innerHTML = response.data.wind.speed;
   sunriseElement.innerHTML = formatSunriseTimestamp(response);
   sunsetElement.innerHTML = formatSunsetTimestamp(response);
-  //document.querySelector("#current-weather-icon").innerHTML =
+  currentWeatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`);
+  currentWeatherIcon.setAttribute("alt", capitalizeFirstLetter(response.data.weather[0].description));
 }
 
 function capitalizeFirstLetter(str) {

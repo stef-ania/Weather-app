@@ -129,17 +129,18 @@ main {
 }
 
 .current-weather-icon {
-  font-size: 7rem;
+  /*font-size: 7rem;*/
   opacity: 1;
   position: absolute;
   right: 4rem;
-  top: 9rem;
+  top: 6rem;
 }
 
+/*
 .fa-cloud-sun.current-weather-icon {
   color: #2c3d64;
   text-shadow: 3px 3px 20px rgba(102, 191, 191, 0.2);
-}
+}*/
 
 h1,
 .current-weather > section p time,
