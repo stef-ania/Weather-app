@@ -2,6 +2,7 @@
 
 body {
   background-color: rgb(240 245 255);
+  color: #2c3d64;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
   padding: 0 20px;
@@ -138,6 +139,7 @@ main {
   position: absolute;
   right: 4rem;
   top: 6rem;
+  z-index: -1;
 }
 
 /*
@@ -150,11 +152,6 @@ h1,
 .current-weather > section p time,
 span#weather-description {
   color: #2c3c64;
-}
-
-.temperature,
-sup {
-  color: #2c3d64;
 }
 
 #weather-description {
@@ -212,6 +209,10 @@ time#date {
   margin: 0.5rem auto;
 }
 
+.current-weather-data {
+  font-weight: 700;
+}
+
 .list-wrap li strong {
   color: #435b97;
 }
@@ -225,10 +226,6 @@ a.nav-link.active.meteo-pill {
   border-bottom: 3px solid #fcd470;
   border-radius: 0;
   color: #3e74fb;
-}
-
-.other-option {
-  color: #2c3d64;
 }
 
 .other-optio:is(:hover, :focus, :active),
@@ -264,7 +261,6 @@ i.fa-solid.fa-cloud-sun.current-weather-icon {
 */
 
 .weather-forecast .weather-forecast-preview-icon {
-  color: #2c3d64;
   font-size: 2.5rem;
   margin: 1rem auto;
 }
