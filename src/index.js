@@ -30,7 +30,35 @@ let currentDate = document.querySelector("#date");
 var currentTime = new Date();
 currentDate.innerHTML = formatDate(currentTime);
 
-// Format Sunrise Unix timestam
+// Current hours:
+function formatHour(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let timeSuffix = "AM";
+
+  if (hours >= 12) {
+    timeSuffix = "PM";
+    hours = hours - 12;
+  }
+
+  if (hours === 0) {
+    hours = 12;
+  }
+
+  if (hours < 10) {
+    hours = "0" + hours;
+  }
+
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+
+  const formattedTime = ", " + hours + ":" + minutes + " " + timeSuffix;
+  return formattedTime;
+}
+
+// Format Sunrise Unix timestamp
 function formatSunriseTimestamp(response) {
   let sunriseTime = response.data.sys.sunrise;
   const sunrise = new Date(sunriseTime * 1000);
@@ -62,10 +90,12 @@ function formatSunsetTimestamp(response) {
 
 // Weather
 function displayWeather(response) {
+  let currentHour = response.data.dt * 1000;
+  let formattedHour = formatHour(currentHour);
+  document.querySelector("#current-hour").textContent = formattedHour;
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp);
   document.querySelector("#weather-description").innerHTML = response.data.weather[0].description;
-
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
   document.querySelector("#sunrise-time").innerHTML = formatSunriseTimestamp(response);
