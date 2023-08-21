@@ -86,23 +86,3 @@ celsiusLink.addEventListener("click", convertToCelsius);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
-// Current weather in the current location
-
-function showLocation(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-
-  let apiKey = "f4d1475cfe015c4c50b2300aa82dd590";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-
-  axios.get(apiUrl).then(displayWeather);
-}
-
-function getCurrentPosition() {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(showLocation);
-}
-
-let button = document.querySelector("#current-location-button");
-button.addEventListener("click", getCurrentPosition);
