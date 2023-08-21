@@ -95,7 +95,8 @@ function displayWeather(response) {
   document.querySelector("#current-hour").textContent = formattedHour;
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp);
-  document.querySelector("#weather-description").innerHTML = response.data.weather[0].description;
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].description.charAt(0).toUpperCase() + response.data.weather[0].description.slice(1);
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
   document.querySelector("#sunrise-time").innerHTML = formatSunriseTimestamp(response);

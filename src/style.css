@@ -156,7 +156,7 @@ sup {
   font-weight: bold;
 }
 
-#weather-description::first-letter {
+p #weather-description::first-letter {
   text-transform: capitalize;
 }
 
@@ -198,6 +198,7 @@ time#date {
 .list-wrap ul {
   list-style-type: none;
   margin-bottom: 0;
+  margin-top: 1rem;
   padding-left: 1rem;
 }
 
