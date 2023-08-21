@@ -93,15 +93,22 @@ function displayWeather(response) {
   let currentHour = response.data.dt * 1000;
   let formattedHour = formatHour(currentHour);
   document.querySelector("#current-hour").textContent = formattedHour;
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = Math.round(response.data.main.temp);
-  document.querySelector("#weather-description").innerHTML = capitalizeFirstLetter(
-    response.data.weather[0].description
-  );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = response.data.wind.speed;
-  document.querySelector("#sunrise-time").innerHTML = formatSunriseTimestamp(response);
-  document.querySelector("#sunset-time").innerHTML = formatSunsetTimestamp(response);
+
+  let cityElement = document.querySelector("#city");
+  let temperatureElement = document.querySelector("#temperature");
+  let descriptionElement = document.querySelector("#weather-description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let sunriseElement = document.querySelector("#sunrise-time");
+  let sunsetElement = document.querySelector("#sunset-time");
+
+  cityElement.innerHTML = response.data.name;
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  descriptionElement.innerHTML = capitalizeFirstLetter(response.data.weather[0].description);
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = response.data.wind.speed;
+  sunriseElement.innerHTML = formatSunriseTimestamp(response);
+  sunsetElement.innerHTML = formatSunsetTimestamp(response);
   //document.querySelector("#current-weather-icon").innerHTML =
 }
 
