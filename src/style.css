@@ -162,9 +162,16 @@ p #weather-description::first-letter {
   text-transform: capitalize;
 }
 
-a,
-a#celsius-link,
-a#fahrenheit-link {
+.active {
+  color: #2c3c64;
+  cursor: default;
+}
+
+.active:hover {
+  text-decoration: none;
+}
+
+a {
   color: #6f98fc;
   text-decoration: none;
 }

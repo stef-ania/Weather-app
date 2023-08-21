@@ -103,6 +103,8 @@ function displayWeather(response) {
   let sunsetElement = document.querySelector("#sunset-time");
   let currentWeatherIcon = document.querySelector("#current-weather-icon");
 
+  celsiusTemperature = response.data.main.temp;
+
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = capitalizeFirstLetter(response.data.weather[0].description);
@@ -135,17 +137,28 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", showCitySearched);
 
 // Temperature unit conversion:
-function convertToCelsius(event) {
-  event.preventDefault();
-  let celsiusTemperature = document.querySelector("#temperature");
-  celsiusTemperature.innerHTML = 22;
-}
-
 function convertToFahrenheit(event) {
   event.preventDefault();
-  let fahrenheitTemperature = document.querySelector("#temperature");
-  fahrenheitTemperature.innerHTML = Math.round((22 * 9) / 5 + 32);
+  let temperatureElement = document.querySelector("#temperature");
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+// Creamos una variable global para que después podamos acceder a ella almacenando el real valor de celsius que nos ofrece la API dentro de displayWeather(response)
+let celsiusTemperature = null;
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
