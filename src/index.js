@@ -88,6 +88,31 @@ function formatSunsetTimestamp(response) {
   return sunsetTimeString;
 }
 
+// HTML for Forecast section
+function displayForecast() {
+  let forecastElement = document.querySelector("#daily-forecast");
+
+  let forecastHTML = "";
+  let days = ["Sab", "Dom", "Lun", "Mar", "Mier"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              <div class="col">
+              <div class="weather-forecast-preview">
+                <div class="forecast-time">${day}</div>
+                <i class="fa-solid fa-cloud-sun weather-forecast-preview-icon"></i>
+                <div class="forecast-temperature">
+                  <span class="forecast-temperature-max">32°</span><span class="forecast-temperature-min">21°</span>
+                </div>
+              </div>
+            </div>
+    `;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 // Weather
 function displayWeather(response) {
   let currentHour = response.data.dt * 1000;
@@ -168,3 +193,5 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 // Set up a default city
 searchCity("Florence");
+
+displayForecast();
