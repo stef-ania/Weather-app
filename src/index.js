@@ -88,26 +88,44 @@ function formatSunsetTimestamp(response) {
   return sunsetTimeString;
 }
 
+function formatDayForecast(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 // HTML for Forecast section
-function displayForecast() {
+function displayForecast(response) {
+  let forecastArray = response.data.daily;
+
   let forecastElement = document.querySelector("#daily-forecast");
 
   let forecastHTML = "";
-  let days = ["Sab", "Dom", "Lun", "Mar", "Mier"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  forecastArray.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
               <div class="col">
               <div class="weather-forecast-preview">
-                <div class="forecast-time">${day}</div>
-                <i class="fa-solid fa-cloud-sun weather-forecast-preview-icon"></i>
+                <div class="forecast-time">${formatDayForecast(forecastDay.dt)}</div>
+                <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+                alt=""
+                width="48"
+                />
+                
                 <div class="forecast-temperature">
-                  <span class="forecast-temperature-max">32°</span><span class="forecast-temperature-min">21°</span>
+                  <span class="forecast-temperature-max">${Math.round(
+                    forecastDay.temp.max
+                  )}°</span><span class="forecast-temperature-min">${Math.round(forecastDay.temp.min)}°</span>
                 </div>
               </div>
             </div>
     `;
+    }
   });
 
   forecastElement.innerHTML = forecastHTML;
