@@ -190,35 +190,8 @@ function showCitySearched(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", showCitySearched);
 
-// Temperature unit conversion:
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
 // Creamos una variable global para que después podamos acceder a ella almacenando el real valor de celsius que nos ofrece la API dentro de displayWeather(response)
 let celsiusTemperature = null;
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelsius);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 // Set up a default city
 searchCity("Florence");
