@@ -20,6 +20,10 @@ h3,
   color: #401899;
   font-weight: 700;
 }
+.logo-icon {
+  margin-bottom: 0.3rem;
+  margin-right: 0.5rem;
+}
 .container,
 .container-fluid,
 .container-lg,
