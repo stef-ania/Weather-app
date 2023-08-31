@@ -26,43 +26,44 @@
     <link href="src/style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <div class="container">
-      <header class="row">
-        <div class="col-sm-3">
-          <a href="https://www.shecodes.io/" target="_blank" class="a-no-decoration">
-            <span class="logo"><i class="fa-solid fa-bolt-lightning"></i>MyMeteo</span></a
-          >
-        </div>
-        <div class="col-sm-9">
-          <form class="search-form" id="search-form">
-            <input
-              type="search"
-              class="form-control form-control-lg flex-item search-input"
-              placeholder="Enter a city..."
-              aria-label="Search"
-              autofocus="off"
-              autocomplete="off"
-              id="city-input"
-              aria-label="submit"
-            />
+    <div class="container-fluid">
+      <header>
+        <nav class="container">
+          <div class="row">
+            <div class="col-sm-3">
+              <a href="https://www.shecodes.io/" target="_blank" class="a-no-decoration">
+                <span class="logo"><i class="fa-solid fa-bolt-lightning"></i>MyMeteo</span></a
+              >
+            </div>
+            <div class="col-sm-9">
+              <form class="search-form" id="search-form">
+                <input
+                  type="search"
+                  class="form-control form-control-lg flex-item search-input"
+                  placeholder="Enter a city..."
+                  aria-label="Search"
+                  autofocus="off"
+                  autocomplete="off"
+                  id="city-input"
+                  aria-label="submit"
+                />
 
-            <input type="submit" class="flex-item main-btn" value="Search" aria-label="submit" />
-          </form>
-        </div>
+                <input type="submit" class="flex-item main-btn" value="Search" aria-label="submit" />
+              </form>
+            </div>
+          </div>
+        </nav>
       </header>
-      <div class="current-weather-container">
+      <div class="container">
         <main class="row">
-          <div class="col-sm-7 current-weather">
+          <div class="col-sm-6 current-weather">
             <section>
+              <time class="current-date" id="date"></time>
               <h1 id="city">Florence</h1>
-              <p>
-                <time id="date"></time>
-                <br />
-                <span id="weather-description">Few clouds, </span><span id="current-hour">08:41 AM</span>
-              </p>
+              <p><span id="weather-description">Few clouds, </span><span id="current-hour">08:41 AM</span></p>
 
               <span class="temperature" id="temperature">25</span>
-              <sup class="unit"> °C</sup>
+              <sup class="unit"> °</sup>
 
               <img
                 class="current-weather-icon"
@@ -72,60 +73,137 @@
               />
             </section>
           </div>
-          <div class="col-sm-5 list-wrap">
-            <section class="">
-              <ul class="">
-                <li>Humidity:</li>
-                <li>Wind:</li>
-                <li>Sunrise:</li>
-                <li>Sunset:</li>
-              </ul>
-            </section>
-            <section class="">
-              <ul class="current-weather-data">
-                <li><span id="humidity">56</span>%</li>
-                <li><span id="wind">2.57</span>km/h</li>
-                <li>
-                  <time datetime="2023-07-15T6:28" id="sunrise-time">06:28 AM</time>
+          <div class="col-sm-6 list-wrap">
+            <!-- start first main container -->
+            <section class="main-container">
+              <!-- start first column  -->
+              <ul class="column-container">
+                <!-- start first mini-row  -->
+                <li class="row-container">
+                  <!-- flex item 1 -->
+                  <img
+                    src="images/material/weather-line-icons/temperature-min.svg"
+                    width="24px"
+                    alt=""
+                    class="child-items"
+                  />
+                  <!-- flex item 2 -->
+                  <div class="child-items">
+                    <h4>Min. temp.</h4>
+                    <p>20º</p>
+                  </div>
                 </li>
-                <li>
-                  <time datetime="2023-07-15T6:28" id="sunset-time">08:26 PM</time>
+                <!-- end first mini-row  -->
+
+                <!-- start second mini-row  -->
+                <li class="row-container">
+                  <!-- flex item 1 -->
+                  <img src="images/material/weather-line-icons/drop.svg" width="24px" alt="" class="child-items" />
+                  <!-- flex item 2 -->
+                  <div class="child-items">
+                    <h4>Humidity</h4>
+                    <p><span id="humidity">45</span><span>%</span></p>
+                  </div>
                 </li>
+                <!-- end second mini-row  -->
+
+                <!-- start third mini-row  -->
+                <li class="row-container">
+                  <!-- flex item 1 -->
+                  <img src="images/material/weather-line-icons/sun-up.svg" width="24px" alt="" class="child-items" />
+                  <!-- flex item 2 -->
+                  <div class="child-items">
+                    <h4>Sunrise</h4>
+                    <p><time datetime="2023-07-15T6:28" id="sunrise-time">06:28 AM</time></p>
+                  </div>
+                </li>
+                <!-- end third mini-row  -->
               </ul>
+              <!-- end first column  -->
+
+              <!-- start second column  -->
+              <ul class="column-container">
+                <!-- start first mini-row  -->
+                <li class="row-container">
+                  <!-- flex item 1 -->
+                  <img
+                    src="images/material/weather-line-icons/temperature-max.svg"
+                    width="24px"
+                    alt=""
+                    class="child-items"
+                  />
+                  <!-- flex item 2 -->
+                  <div class="child-items">
+                    <h4>Max. temp.</h4>
+                    <p>28º</p>
+                  </div>
+                </li>
+                <!-- end first mini-row  -->
+
+                <!-- start second mini-row  -->
+                <li class="row-container">
+                  <!-- flex item 1 -->
+                  <img src="images/material/weather-line-icons/wind-01.svg" width="24px" alt="" class="child-items" />
+                  <!-- flex item 2 -->
+                  <div class="child-items">
+                    <h4>Wind</h4>
+                    <p><span id="wind">8</span><span>km/h</span></p>
+                  </div>
+                </li>
+                <!-- end second mini-row  -->
+
+                <!-- start third mini-row  -->
+                <li class="row-container">
+                  <!-- flex item 1 -->
+                  <img src="images/material/weather-line-icons/sun-down.svg" width="24px" alt="" class="child-items" />
+                  <!-- flex item 2 -->
+                  <div class="child-items">
+                    <h4>Sunset</h4>
+                    <p id="sunset-time">
+                      <time datetime="2023-07-15T6:28" id="sunset-time">08:26 PM</time>
+                    </p>
+                  </div>
+                </li>
+                <!-- end third mini-row  -->
+              </ul>
+              <!-- end second column  -->
             </section>
+            <!-- end main container -->
           </div>
         </main>
-      </div>
 
-      <section class="row week">
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link active meteo-pill" aria-current="page" href="#">This week</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link other-option" href="#">Rainfall</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link other-option" href="#">Wind</a>
-          </li>
-        </ul>
-      </section>
-      <section class="tab-content" id="tabs-content">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
-          <div class="weather-forecast row" id="daily-forecast">
-            <!-- html from js -->
+        <section class="row week">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active meteo-pill" aria-current="page" href="#">This week</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link other-option" href="#">Rainfall</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link other-option" href="#">Wind</a>
+            </li>
+          </ul>
+        </section>
+        <section class="tab-content" id="tabs-content">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
+            <div class="weather-forecast row" id="daily-forecast">
+              <!-- html from js -->
+            </div>
           </div>
-        </div>
-        <div class="tab-pane fade" id="pills-rainfall" role="tabpanel" aria-labelledby="pills-rainfall-tab">...</div>
-        <div class="tab-pane fade" id="pills-wind" role="tabpanel" aria-labelledby="pills-wind-tab">...</div>
-      </section>
+          <div class="tab-pane fade" id="pills-rainfall" role="tabpanel" aria-labelledby="pills-rainfall-tab">...</div>
+          <div class="tab-pane fade" id="pills-wind" role="tabpanel" aria-labelledby="pills-wind-tab">...</div>
+        </section>
 
-      <footer>
-        This project is
-        <strong> <a href="https://github.com/stef-ania/Weather-app" target="_blank">open-sourced on GitHub</a></strong>
-        by
-        <strong>Stefania Desogus</strong>
-      </footer>
+        <footer>
+          This project is
+          <strong>
+            <a href="https://github.com/stef-ania/Weather-app" target="_blank">open-sourced on GitHub</a></strong
+          >
+          by
+          <strong>Stefania Desogus</strong>
+        </footer>
+      </div>
     </div>
     <script src="src/index.js"></script>
   </body>

@@ -1,37 +1,44 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Open+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Quicksand:wght@700&display=swap");
 
 body {
-  background-color: rgb(240 245 255);
-  color: #2c3d64;
+  background-color: #b5bafe;
+  color: #3b1f99;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
-  padding: 0 20px;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
   font-size: 2rem;
-  font-weight: 700;
-  line-height: 2.5rem;
+  line-height: 4rem;
   margin: 0;
 }
 h2,
 h3,
 .logo {
-  color: #7098fc;
+  color: #401899;
   font-weight: 700;
 }
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  --bs-gutter-x: 0rem;
+}
 header {
-  margin-bottom: 2rem;
-  padding: 2rem 0;
+  /*margin-bottom: 2rem;
+  padding: 2rem 0;*/
+  background-image: url(../images/material/decorative-clouds_with-shadow.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 206px;
 }
 .container {
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.05);
-  margin: 3rem auto;
-  max-width: 900px;
+  max-width: 1000px;
   padding: 2rem;
 }
 
@@ -40,7 +47,7 @@ header {
 }
 
 a .logo {
-  font-family: "Nunito", Helvetica, Arial, sans-serif;
+  font-family: "Quicksand", Helvetica, Arial, sans-serif;
   font-size: 1.8rem;
   line-height: 3rem;
   text-decoration: none;
@@ -79,8 +86,8 @@ a .logo {
 }
 
 .form-control {
-  background-color: rgb(240 245 255);
-  border: 1px solid #f0f5ff;
+  background-color: rgb(255 255 255);
+  border: 2px solid rgba(181, 186, 254, 0.5);
 }
 
 .form-control-lg {
@@ -89,16 +96,16 @@ a .logo {
 }
 
 .form-control:focus {
-  background-color: rgb(240 245 255);
+  background-color: rgb(255 255 255);
   border-color: transparent;
   box-shadow: 0 0 0 0.2rem rgba(111, 152, 252, 0.25);
   outline: 0;
 }
 
 .main-btn {
-  background-color: rgba(247, 107, 138, 1);
+  background-color: rgba(255, 125, 189, 1);
   border: none;
-  border: 1px solid rgba(247, 107, 138, 1);
+  border: 1px solid rgba(255, 125, 189, 1);
   border-radius: 8px;
   color: #fff;
   font-size: 1rem;
@@ -108,16 +115,11 @@ a .logo {
 }
 
 .main-btn:hover {
-  background-color: rgba(247, 107, 138, 0.8);
-  border: 1px solid rgba(247, 107, 138, 0.7);
+  background-color: rgba(255, 125, 189, 0.8);
+  border: 1px solid rgba(255, 125, 189, 0.8);
   transition: all 200ms ease-in-out;
 }
 
-.current-weather-container {
-  padding: 2rem 1rem;
-}
-
-.current-weather-container,
 .weather-forecast-preview {
   border: 1px solid #e5e7ea;
   border-radius: 8px;
@@ -148,27 +150,22 @@ main {
   text-shadow: 3px 3px 20px rgba(102, 191, 191, 0.2);
 }*/
 
+/*
 h1,
 .current-weather > section p time,
 span#weather-description {
   color: #2c3c64;
-}
+}*/
 
-#weather-description {
-  font-weight: bold;
+.current-date {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  text-transform: uppercase;
 }
 
 p #weather-description::first-letter {
   text-transform: capitalize;
-}
-
-.active {
-  color: #2c3c64;
-  cursor: default;
-}
-
-.active:hover {
-  text-decoration: none;
 }
 
 a {
@@ -176,22 +173,104 @@ a {
   text-decoration: none;
 }
 
-.temperature {
-  font-size: 8rem;
+h1,
+.temperature,
+#weather-description {
+  font-family: "Quicksand", Helvetica, Arial, sans-serif;
   font-weight: 700;
-  line-height: 8rem;
+}
+
+.temperature {
+  font-size: 9rem;
+  line-height: 9rem;
 }
 
 sup {
-  font-size: 1.5rem;
+  font-size: 6rem;
   font-weight: bold;
-  top: -4.5rem;
+  top: -2rem;
 }
 
 time#date {
-  line-height: 3rem;
+  line-height: 1rem;
 }
 
+/* Current weather extra info */
+.child-items h4 {
+  font-size: 0.75rem;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
+}
+ul.column-container {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.child-items p {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.5rem;
+  margin: 0px;
+  padding-top: 0.5rem;
+}
+.child-items h4,
+.child-items p {
+  color: #fff;
+  text-align: left;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+.main-container {
+  align-content: normal;
+  align-items: normal;
+  background: #9a9ffe;
+  border-radius: 1.5rem;
+  box-shadow: 0px 16px 16px 0px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  justify-content: normal;
+}
+.column-container {
+  align-content: normal;
+  align-items: normal;
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: normal;
+}
+.flex-container,
+.row-container {
+  align-content: normal;
+  align-items: flex-start;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: normal;
+  padding: 2rem;
+}
+
+.row-container .child-items {
+  align-self: auto;
+  display: block;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 1;
+  margin: 0px;
+  order: 0;
+}
+
+.row-container .child-items:nth-child(1) {
+  padding-right: 1rem;
+}
+
+img.child-items {
+  width: 2.5rem;
+}
+
+/*
 .list-wrap {
   align-items: flex-end;
   display: flex;
@@ -215,6 +294,7 @@ time#date {
   color: #384c7e;
   margin: 0.5rem auto;
 }
+*/
 
 .current-weather-data {
   font-weight: 700;
@@ -328,5 +408,13 @@ footer {
 
   .main-btn {
     width: 100%;
+  }
+  .main-container {
+    flex-direction: column;
+    width: 100%;
+  }
+  .row-container {
+    justify-content: center;
+    padding: 2rem 1rem;
   }
 }
