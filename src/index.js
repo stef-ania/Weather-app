@@ -140,7 +140,7 @@ function getForecast(coordinates) {
   axios.get(apiURL).then(displayForecast);
 }
 
-// Weather
+// Current weather
 function displayWeather(response) {
   let currentHour = response.data.dt * 1000;
   let formattedHour = formatHour(currentHour);
@@ -154,6 +154,8 @@ function displayWeather(response) {
   let sunriseElement = document.querySelector("#sunrise-time");
   let sunsetElement = document.querySelector("#sunset-time");
   let currentWeatherIcon = document.querySelector("#current-weather-icon");
+  let currentMaxTemp = document.querySelector("#current-max-temp");
+  let currentMinTemp = document.querySelector("#current-min-temp");
 
   celsiusTemperature = response.data.main.temp;
 
@@ -166,6 +168,8 @@ function displayWeather(response) {
   sunsetElement.innerHTML = formatSunsetTimestamp(response);
   currentWeatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`);
   currentWeatherIcon.setAttribute("alt", capitalizeFirstLetter(response.data.weather[0].description));
+  currentMaxTemp.innerHTML = Math.round(response.data.main.temp_max);
+  currentMinTemp.innerHTML = Math.round(response.data.main.temp_min);
 
   getForecast(response.data.coord);
 }
