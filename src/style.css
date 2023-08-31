@@ -120,23 +120,18 @@ a .logo {
   transition: all 200ms ease-in-out;
 }
 
-.weather-forecast-preview {
-  border: 1px solid #e5e7ea;
-  border-radius: 8px;
-}
-
 main {
   border-radius: 32px;
   padding: 1rem;
 }
 
-.current-weather {
+.current-weather-container {
+  margin-top: 2rem;
   position: relative;
   z-index: 1;
 }
 
 .current-weather-icon {
-  /*font-size: 7rem;*/
   opacity: 1;
   position: absolute;
   right: 4rem;
@@ -144,22 +139,10 @@ main {
   z-index: -1;
 }
 
-/*
-.fa-cloud-sun.current-weather-icon {
-  color: #2c3d64;
-  text-shadow: 3px 3px 20px rgba(102, 191, 191, 0.2);
-}*/
-
-/*
-h1,
-.current-weather > section p time,
-span#weather-description {
-  color: #2c3c64;
-}*/
-
 .current-date {
   font-size: 0.75rem;
   letter-spacing: 1px;
+  line-height: 1rem;
   opacity: 0.7;
   text-transform: uppercase;
 }
@@ -191,10 +174,6 @@ sup {
   top: -2rem;
 }
 
-time#date {
-  line-height: 1rem;
-}
-
 /* Current weather extra info */
 .child-items h4 {
   font-size: 0.75rem;
@@ -211,6 +190,7 @@ ul.column-container {
 .child-items p {
   font-size: 1rem;
   font-weight: bold;
+  letter-spacing: 1px;
   line-height: 1.5rem;
   margin: 0px;
   padding-top: 0.5rem;
@@ -224,7 +204,7 @@ ul.column-container {
 .main-container {
   align-content: normal;
   align-items: normal;
-  background: #9a9ffe;
+  background-color: #9a9ffe;
   border-radius: 1.5rem;
   box-shadow: 0px 16px 16px 0px rgba(0, 0, 0, 0.1);
   display: inline-flex;
@@ -241,7 +221,6 @@ ul.column-container {
   flex-wrap: nowrap;
   justify-content: normal;
 }
-.flex-container,
 .row-container {
   align-content: normal;
   align-items: flex-start;
@@ -270,39 +249,15 @@ img.child-items {
   width: 2.5rem;
 }
 
-/*
-.list-wrap {
-  align-items: flex-end;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  overflow: hidden;
-}
-
-.list-wrap section {
-  align-self: auto;
-  flex: 1;
-}
-.list-wrap ul {
-  list-style-type: none;
-  margin-bottom: 0;
-  margin-top: 1rem;
-  padding-left: 1rem;
-}
-
-.list-wrap li {
-  color: #384c7e;
-  margin: 0.5rem auto;
-}
-*/
-
 .current-weather-data {
   font-weight: 700;
 }
-
+/*
 .list-wrap li strong {
   color: #435b97;
-}
+}*/
+
+/* Forecast week section */
 
 .row.week {
   padding: 2rem 1rem 1rem;
@@ -312,24 +267,60 @@ a.nav-link.active.meteo-pill {
   background-color: transparent;
   border-bottom: 3px solid #fcd470;
   border-radius: 0;
-  color: #3e74fb;
+  color: #3b1f99;
+  opacity: 1;
+  transition: all 200ms ease-in-out;
 }
 
-.other-optio:is(:hover, :focus, :active),
+.other-optio:is(:hover, :focus),
 .nav-link:focus,
-.nav-link:hover {
-  color: #3e74fb;
+.nav-link:hover,
+.nav-pills .nav-link {
+  border-radius: 0;
+  color: #3b1f99;
+  opacity: 0.7;
+  transition: all 200ms ease-in-out;
+}
+
+.other-optio:is(:active),
+.nav-link:active {
+  border-bottom: 3px solid #fcd470;
 }
 
 .weather-forecast {
+  background-color: #9a9ffe;
+  border-radius: 24px;
+  box-shadow: 0px 16px 16px 0px rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
+  padding: 2rem 1rem;
   text-align: center;
 }
 
 .weather-forecast .forecast-time {
-  color: #9096a5;
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+}
+
+.weather-forecast .weather-forecast-icon {
+  font-size: 2.5rem;
+  margin: 1rem auto;
+}
+
+.weather-forecast .forecast-temperature {
+  color: #fff;
   font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
   line-height: 1.5rem;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.weather-forecast .forecast-temperature-min {
+  margin-left: 0.75rem;
+  opacity: 0.6;
 }
 
 /*
@@ -347,34 +338,22 @@ i.fa-solid.fa-cloud-sun.current-weather-icon {
 }
 */
 
-.weather-forecast .weather-forecast-preview-icon {
-  font-size: 2.5rem;
-  margin: 1rem auto;
-}
-
-.weather-forecast-preview {
-  padding: 1rem;
-}
-
-.weather-forecast .forecast-temperature {
-  color: #3e74fb;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 2rem;
-}
-
-.weather-forecast .forecast-temperature-min {
-  margin-left: 0.75rem;
-  opacity: 0.6;
-}
-
 footer {
-  border-top: 1px solid rgb(240 245 255);
-  color: #9096a5;
+  background-color: #3b1f99;
+  color: #fff;
   font-size: 0.75rem;
   margin: 3rem auto 0;
-  padding-top: 2rem;
+  padding: 2rem;
   text-align: center;
+}
+
+footer a {
+  color: #fff;
+}
+
+footer a:hover {
+  opacity: 0.8;
+  transition: all 200ms ease-in-out;
 }
 
 @media all and (max-width: 768px) {

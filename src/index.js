@@ -64,7 +64,7 @@ function formatSunriseTimestamp(response) {
   const sunrise = new Date(sunriseTime * 1000);
 
   const options = {
-    hour: "numeric",
+    hour: "2-digit",
     minute: "2-digit",
     hour12: true,
   };
@@ -79,7 +79,7 @@ function formatSunsetTimestamp(response) {
   const sunset = new Date(sunsetTime * 1000);
 
   const options = {
-    hour: "numeric",
+    hour: "2-digit",
     minute: "2-digit",
     hour12: true,
   };
@@ -105,12 +105,12 @@ function displayForecast(response) {
   let forecastHTML = "";
 
   forecastArray.forEach(function (forecastDay, index) {
-    if (index < 5) {
+    if (index < 6) {
       forecastHTML =
         forecastHTML +
         `
               <div class="col">
-              <div class="weather-forecast-preview">
+              <div class="weather-forecast">
                 <div class="forecast-time">${formatDayForecast(forecastDay.dt)}</div>
                 <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
                 alt=""

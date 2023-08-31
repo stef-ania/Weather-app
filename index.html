@@ -55,7 +55,7 @@
       </header>
       <div class="container">
         <main class="row">
-          <div class="col-sm-6 current-weather">
+          <div class="col-sm-6 current-weather-container">
             <section>
               <time class="current-date" id="date"></time>
               <h1 id="city">Florence</h1>
@@ -88,7 +88,7 @@
                   />
                   <!-- flex item 2 -->
                   <div class="child-items">
-                    <h4>Min. temp.</h4>
+                    <h4>Min. temperature</h4>
                     <p>20º</p>
                   </div>
                 </li>
@@ -133,7 +133,7 @@
                   />
                   <!-- flex item 2 -->
                   <div class="child-items">
-                    <h4>Max. temp.</h4>
+                    <h4>Max. temperature</h4>
                     <p>28º</p>
                   </div>
                 </li>
@@ -186,23 +186,21 @@
         </section>
         <section class="tab-content" id="tabs-content">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
-            <div class="weather-forecast row" id="daily-forecast">
+            <div class="row" id="daily-forecast">
               <!-- html from js -->
             </div>
           </div>
           <div class="tab-pane fade" id="pills-rainfall" role="tabpanel" aria-labelledby="pills-rainfall-tab">...</div>
           <div class="tab-pane fade" id="pills-wind" role="tabpanel" aria-labelledby="pills-wind-tab">...</div>
         </section>
-
-        <footer>
-          This project is
-          <strong>
-            <a href="https://github.com/stef-ania/Weather-app" target="_blank">open-sourced on GitHub</a></strong
-          >
-          by
-          <strong>Stefania Desogus</strong>
-        </footer>
       </div>
+
+      <footer>
+        This project is
+        <strong> <a href="https://github.com/stef-ania/Weather-app" target="_blank">open-sourced on GitHub</a></strong>
+        by
+        <strong>Stefania Desogus</strong>
+      </footer>
     </div>
     <script src="src/index.js"></script>
   </body>
