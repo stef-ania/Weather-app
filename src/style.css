@@ -140,6 +140,7 @@ main {
   position: absolute;
   right: 4rem;
   top: 6rem;
+  width: 220px;
   z-index: -1;
 }
 
@@ -308,9 +309,8 @@ a.nav-link.active.meteo-pill {
   text-transform: uppercase;
 }
 
-.weather-forecast .weather-forecast-icon {
-  font-size: 2.5rem;
-  margin: 1rem auto;
+.weather-forecast img {
+  padding: 1rem 0;
 }
 
 .weather-forecast .forecast-temperature {

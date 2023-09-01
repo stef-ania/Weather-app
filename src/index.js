@@ -112,7 +112,7 @@ function displayForecast(response) {
               <div class="col">
               <div class="weather-forecast">
                 <div class="forecast-time">${formatDayForecast(forecastDay.dt)}</div>
-                <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+                <img src="images/material/kawaii-weather-icons/${forecastDay.weather[0].icon}.svg"
                 alt=""
                 width="48"
                 />
@@ -166,7 +166,7 @@ function displayWeather(response) {
   windElement.innerHTML = response.data.wind.speed;
   sunriseElement.innerHTML = formatSunriseTimestamp(response);
   sunsetElement.innerHTML = formatSunsetTimestamp(response);
-  currentWeatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@4x.png`);
+  currentWeatherIcon.setAttribute("src", `images/material/kawaii-weather-icons/${response.data.weather[0].icon}.svg`);
   currentWeatherIcon.setAttribute("alt", capitalizeFirstLetter(response.data.weather[0].description));
   currentMaxTemp.innerHTML = Math.round(response.data.main.temp_max);
   currentMinTemp.innerHTML = Math.round(response.data.main.temp_min);
