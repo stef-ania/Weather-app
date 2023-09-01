@@ -140,7 +140,7 @@ main {
   position: absolute;
   right: 4rem;
   top: 6rem;
-  width: 220px;
+  width: 216px;
   z-index: -1;
 }
 
@@ -311,6 +311,7 @@ a.nav-link.active.meteo-pill {
 
 .weather-forecast img {
   padding: 1rem 0;
+  width: 72px;
 }
 
 .weather-forecast .forecast-temperature {
