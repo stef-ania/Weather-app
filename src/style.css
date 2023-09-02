@@ -140,7 +140,7 @@ main {
   position: absolute;
   right: 4rem;
   top: 6rem;
-  width: 216px;
+  width: 200px;
   z-index: -1;
 }
 
@@ -269,28 +269,24 @@ img.child-items {
   padding: 2rem 1rem 1rem;
 }
 
-a.nav-link.active.meteo-pill {
+.other-option:is(:hover, :focus),
+button#pills-week-forecast-tab,
+button#pills-humidity-tab,
+button#pills-wind-tab {
+  border-radius: 0;
+  border-radius: 0;
+  color: #3b1f99;
+  transition: all 200ms ease-in-out;
+}
+
+.other-option:is(:active),
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
   background-color: transparent;
   border-bottom: 3px solid #fcd470;
   border-radius: 0;
   color: #3b1f99;
-  opacity: 1;
   transition: all 200ms ease-in-out;
-}
-
-.other-optio:is(:hover, :focus),
-.nav-link:focus,
-.nav-link:hover,
-.nav-pills .nav-link {
-  border-radius: 0;
-  color: #3b1f99;
-  opacity: 0.7;
-  transition: all 200ms ease-in-out;
-}
-
-.other-optio:is(:active),
-.nav-link:active {
-  border-bottom: 3px solid #fcd470;
 }
 
 .weather-forecast {
@@ -316,7 +312,8 @@ a.nav-link.active.meteo-pill {
   width: 72px;
 }
 
-.weather-forecast .forecast-temperature {
+.weather-forecast .forecast-text,
+span.forecast-temperature-min {
   color: #fff;
   font-size: 1rem;
   font-weight: 700;
@@ -325,7 +322,7 @@ a.nav-link.active.meteo-pill {
   text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
-.weather-forecast .forecast-temperature-min {
+span.forecast-temperature-min {
   margin-left: 0.75rem;
   opacity: 0.6;
 }

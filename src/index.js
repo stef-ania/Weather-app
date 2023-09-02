@@ -118,7 +118,7 @@ function displayForecast(response) {
                 />
                 
                 <div class="forecast-temperature">
-                  <span class="forecast-temperature-max">${Math.round(
+                  <span class="forecast-text">${Math.round(
                     forecastDay.temp.max
                   )}°</span><span class="forecast-temperature-min">${Math.round(forecastDay.temp.min)}°</span>
                 </div>
@@ -132,12 +132,94 @@ function displayForecast(response) {
 }
 
 // Forecast prediction
-
 function getForecast(coordinates) {
   let apiKey = "0efb4fc16a9ed98dc0b3aafd8491d6ad";
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   console.log(apiURL);
   axios.get(apiURL).then(displayForecast);
+}
+
+// HTML for Humidity forecast section
+function displayForecastHumidity(response) {
+  console.log(response.data.daily);
+  let forecastArray = response.data.daily;
+
+  let forecastElement = document.querySelector("#humidity-forecast");
+
+  let forecastHTML = "";
+
+  forecastArray.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+              <div class="col">
+              <div class="weather-forecast">
+                <div class="forecast-time">${formatDayForecast(forecastDay.dt)}</div>
+                <img src="images/material/kawaii-weather-icons/${forecastDay.weather[0].icon}.svg"
+                alt=""
+                width="48"
+                />
+                
+                <div class="forecast-temperature">
+                 <span class="forecast-text">${Math.round(forecastDay.humidity)}%</span>
+                </div>
+              </div>
+            </div>
+    `;
+    }
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
+// Humidity forecast prediction
+function getForecastHumidity(coordinates) {
+  let apiKey = "0efb4fc16a9ed98dc0b3aafd8491d6ad";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiURL);
+  axios.get(apiURL).then(displayForecastHumidity);
+}
+
+// HTML for Wind forecast section
+function displayForecastWind(response) {
+  let forecastArray = response.data.daily;
+
+  let forecastElement = document.querySelector("#wind-forecast");
+
+  let forecastHTML = "";
+
+  forecastArray.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+              <div class="col">
+              <div class="weather-forecast">
+                <div class="forecast-time">${formatDayForecast(forecastDay.dt)}</div>
+                <img src="images/material/kawaii-weather-icons/${forecastDay.weather[0].icon}.svg"
+                alt=""
+                width="48"
+                />
+                
+                <div class="forecast-temperature">
+                 <span class="forecast-text">${Math.round(forecastDay.wind_gust)} km/h</span>
+                </div>
+              </div>
+            </div>
+    `;
+    }
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
+// Wind forecast prediction
+function getForecastWind(coordinates) {
+  let apiKey = "0efb4fc16a9ed98dc0b3aafd8491d6ad";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiURL);
+  axios.get(apiURL).then(displayForecastWind);
 }
 
 // Current weather
@@ -163,7 +245,7 @@ function displayWeather(response) {
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = capitalizeFirstLetter(response.data.weather[0].description);
   humidityElement.innerHTML = response.data.main.humidity;
-  windElement.innerHTML = response.data.wind.speed;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
   sunriseElement.innerHTML = formatSunriseTimestamp(response);
   sunsetElement.innerHTML = formatSunsetTimestamp(response);
   currentWeatherIcon.setAttribute("src", `images/material/kawaii-weather-icons/${response.data.weather[0].icon}.svg`);
@@ -172,6 +254,8 @@ function displayWeather(response) {
   currentMinTemp.innerHTML = Math.round(response.data.main.temp_min);
 
   getForecast(response.data.coord);
+  getForecastHumidity(response.data.coord);
+  getForecastWind(response.data.coord);
 }
 
 function capitalizeFirstLetter(str) {
