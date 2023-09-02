@@ -141,7 +141,6 @@ function getForecast(coordinates) {
 
 // HTML for Humidity forecast section
 function displayForecastHumidity(response) {
-  console.log(response.data.daily);
   let forecastArray = response.data.daily;
 
   let forecastElement = document.querySelector("#humidity-forecast");
